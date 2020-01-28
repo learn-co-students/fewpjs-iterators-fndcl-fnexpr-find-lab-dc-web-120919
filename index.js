@@ -69,17 +69,23 @@ const record = [
 
 function superbowlWin(superbowlArray){
 
-  let result;
-
-  for (let i = 0; i< superbowlArray.length; i++){
-    let yearResult = superbowlArray[i];
-    if(yearResult.result === "W"){
-      return yearResult.year;
-    }
-  }
+  let searchResult;
   
+  searchResult = superbowlArray.find(recordLine => recordLine.result === "W");
 
-  return result;
+  //shorter; !! needed to turn object into boolean value!
+  if (!!searchResult){
+    return searchResult.year;
+  }
+  return undefined; 
+  // for (let i = 0; i< superbowlArray.length; i++){
+  //   let yearResult = superbowlArray[i];
+  //   if(yearResult.result === "W"){
+  //     return yearResult.year;
+  //   }
+  // }
 }
 
-superbowlWin(record);
+let win = superbowlWin(record);
+
+console.log(win);
